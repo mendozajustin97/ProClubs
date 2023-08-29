@@ -1,0 +1,12 @@
+{% extends "base.html" %} {% block title %}Welcome to Heaven{% endblock %} {%
+block content %}
+
+<div class="row align-items-center justify-content-evenly">
+  <h1>This is Your Profile Page with Stats</h1>
+</div>
+<ul>
+  <li>{{ current_user.username }}</li>
+  <li>{{ current_user.email }}</li>
+</ul>
+
+{% endblock content %}

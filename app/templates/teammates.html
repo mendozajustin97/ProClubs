@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block title %}Player Hub{% endblock %} {% block
+content %}
+
+<div class="row align-items-center justify-content-evenly text-center mt-3">
+  <h1>This is the Teammates Page</h1>
+  <a
+    href="{{ url_for('search_teammates') }}"
+    class="btn btn-dark my-4 text-light"
+    >Search Teammate!</a
+  >
+</div>
+
+<div class="card my-3">
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p>Username: {{ user.username }}</p>
+      <p>Email: {{ user.email }}</p>
+    </blockquote>
+  </div>
+</div>
+
+{% endblock content %}

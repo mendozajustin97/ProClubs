@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block title %}My Player{% endblock %} {% block
+content %}
+
+<div class="row align-items-center justify-content-evenly text-center mt-3">
+  <h1>Register Your Player</h1>
+  <a href="{{ url_for('match') }}" class="btn btn-dark my-4 text-light"
+    >First step to becoming a part of something more</a
+  >
+</div>
+
+{% for match in matches %}
+<div class="card my-3">
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p>Info: {{ match.maps }}</p>
+      <p>Rating: {{ match.modes }}</p>
+    </blockquote>
+  </div>
+  {% if match.user_id == current_user.id %}
+  <a href="{{ url_for('edit_match', match_id=match.id) }}" class="btn btn-dark"
+    >Edit</a
+  >
+  {% endif %}
+</div>
+{% endfor %} {% endblock content %}

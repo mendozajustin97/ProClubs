@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block content %}
+
+<form class="bg-white p-5 rounded mt-3" action="" method="POST">
+  <h1 class="text-center">Create an Starting 11!</h1>
+
+  {{ form.csrf_token }} {{ form.maps.label }} {{ form.maps(class='form-control',
+  placeholder='Enter your favoured postion and Username (ex:GK applesauce123)')
+  }} {{ form.modes.label }} {{ form.modes(class='form-control',
+  placeholder='Enter your player rating') }} {{ form.submit(class='btn btn-dark
+  w-100 mt-3') }}
+</form>
+{% endblock %}
