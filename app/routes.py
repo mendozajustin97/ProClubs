@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for
 from flask_login import login_user, logout_user, login_required, current_user
-from app import app
+from app import app, db, login
 from app.forms import MatchForm, SignUpForm, LogInForm, SearchForm
 from app.models import User, Matches
 
@@ -120,18 +120,16 @@ def eights():
 @login_required
 def edit_match(match_id):
     match = Matches.query.get(match_id)
-    if not match:
-        return redirect(url_for('index'))
-    if match.user_id != current_user.id:
-        return redirect(url_for('index'))
     form = MatchForm()
     if form.validate_on_submit():
-        new_maps = form.maps.data
-        new_modes = form.modes.data
-
-        match.update(maps=new_maps, modes=new_modes)
-
-        return redirect(url_for('eights', match_id=match.id))
+        match.maps = form.maps.data
+        match.modes = form.modes.data
+        # Update Database
+        db.session.add(match)
+        db.session.commit()
+        return redirect(url_for('eights', id=match.id))
+    form.maps.data = match.maps
+    form.modes.data = match.modes
     return render_template('edit_match.html', match=match, form=form)
 
 @app.route('/delete_match/<match_id>/delete')

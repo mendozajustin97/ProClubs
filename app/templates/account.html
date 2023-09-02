@@ -8,5 +8,21 @@ content %}
   <li>{{ current_user.username }}</li>
   <li>{{ current_user.email }}</li>
 </ul>
+<div
+  id="wg-api-football-standings"
+  data-host="api-football-v1.p.rapidapi.com"
+  data-key="e769829320msh2f5a74acce30d24p12ecf8jsnc574cf1bb519"
+  data-league="39"
+  data-team=""
+  data-season="2023"
+  data-theme=""
+  data-show-errors="false"
+  data-show-logos="true"
+  class="wg_loader"
+></div>
+<script
+  type="module"
+  src="https://widgets.api-sports.io/2.0.3/widgets.js"
+></script>
 
 {% endblock content %}
